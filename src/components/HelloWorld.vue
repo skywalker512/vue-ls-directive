@@ -1,13 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { vTest } from '../directive';
+import { ref } from 'vue';
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
+const count = ref(0);
+
+defineSlots<{
+  default(): any;
+}>();
 </script>
 
 <template>
   <h1>{{ msg }}</h1>
+
+  <slot>
+    <p v-test="{}">Default slot content</p>
+  </slot>
 
   <div class="card">
     <button type="button" @click="count++">count is {{ count }}</button>
